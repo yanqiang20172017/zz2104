@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>bash函数</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+</head>
+<body>
+<div class='page'><h1 class='title'>bash函数</h1><br/><strong><span style="color:#ff0000;">函数</span></strong><br />定义函数<br />调用函数<br />取消函数<br />函数传参 <br />    $1,$2<br /><br />命名空间 <br />    local<br />    <br />    #!/bin/bash<br />    a=8<br />    test(){<br />            local a<br />            echo $a<br />            a=9<br />            echo $a<br />    }<br />    echo $a<br />    test<br />    echo $a<br />    <br />返回值 <br />    return value<br />    value不能超过255<br />    <br />myfunc()		#函数定义<br />{<br />echo &quot;This is my first shell function&quot;<br />}<br /><br />myfunc			#函数调用<br /><br />unset myfunc	#取消函数<br /><br /><br />例：<br />lsl(){<br />ls –l<br />}<br />cd &quot;$1&quot; &amp;&amp; lsl<br /><br />例：<br />readPass() {<br />PASS=&quot;&quot;<br />echo -n &quot;Entry Password: &quot;<br />stty -echo<br />read PASS<br />stty echo<br />echo<br />}<br />readPass<br />echo Password is $PASS<br /><br /><span style="color:#ff0000;">使用$1,$2传参<br />#!/bin/bash<br />test(){<br />        echo $1 $2<br />}<br />test 5</span>  6<br /><br /><br />使用$*传参<br />[root@wing shell]# cat a.sh<br />#!/bin/bash<br />a=(1 2 3 4 5)<br />hello(){<br />	for i in $*   #因为是一个数组,不知道有多少个参数,所以使用$*获取所有参数<br />	do<br />		echo $[$i*2]<br />	done<br />}<br />hello ${a[*]}<br /></div>
+</body>
+</html>
